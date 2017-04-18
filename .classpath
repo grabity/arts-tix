@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry kind="src" path="src/test/java"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Spring-MVC"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Spring-Beans"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Spring-Context"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Spring-Core"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Spring-Web"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Spring-Boot"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Spring-Test"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Hamcrest"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
