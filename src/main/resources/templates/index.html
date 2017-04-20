@@ -16,7 +16,34 @@
     <![endif]-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
-<body>
+<body ng-app="app" ng-controller="home as home">
+	<script type="text/javascript" src="/webjars/angularjs/angular.min.js"></script>
+	<script type="text/javascript">
+		angular
+				.module("app", [])
+				.config(
+						function($httpProvider) {
+							$httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+						}).controller("home", function($http, $location) {
+					var self = this;
+					$http.get("/user").success(function(data) {
+						self.user = data.userAuthentication.details.name;
+						self.authenticated = true;
+					}).error(function() {
+						self.user = "N/A";
+						self.authenticated = false;
+					});
+					self.logout = function() {
+						$http.post('logout', {}).success(function() {
+							self.authenticated = false;
+							$location.path("/");
+						}).error(function(data) {
+							console.log("Logout failed")
+							self.authenticated = false;
+						});
+					};
+				});
+	</script>
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -29,15 +56,14 @@
           <a class="navbar-brand" href="#">Last Call</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right">
-            <div class="form-group">
-              <input type="text" placeholder="Email" class="form-control"/>
-            </div>
-            <div class="form-group">
-              <input type="password" placeholder="Password" class="form-control"/>
-            </div>
-            <button type="submit" class="btn btn-success">Sign in</button>
-          </form>
+          <ul class="nav navbar-nav navbar-right" ng-show="!home.authenticated">
+      		<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      		<li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    	  </ul>
+          <ul class="nav navbar-nav navbar-right" ng-show="home.authenticated">
+      		<li><a href="/profile"><span ng-bind="home.user"></span></a></li>
+   			<li><button ng-click="home.logout()"  ng-show="home.authenticated" class="btn btn-link">Logout</button></li>
+    	  </ul>
         </div><!--/.navbar-collapse -->
       </div>
     </nav>
