@@ -7,4 +7,6 @@ import com.vantiv.model.Event;
 public interface EventsService {
 
 	public List<Event> findAll();
+	
+	public Event findById(Long eventId);
 }

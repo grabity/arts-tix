@@ -1,13 +1,13 @@
 package com.vantiv.repositories;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import java.util.List;
+
 import org.springframework.data.repository.Repository;
 
 import com.vantiv.model.Event;
 
 public interface EventRepository extends Repository<Event, Long> {
 
-	public Page<Event> findAll(Pageable pageable);
+	public List<Event> findAll();
 	public Event findById(Long id);
 }

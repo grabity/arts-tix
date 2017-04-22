@@ -44,20 +44,38 @@
 
 	<br/><br/><br/><br/><br/><br/>
 
-	<div class="container">
-	  <div class="row">
-	    <div class="col-sm-6 col-md-4" th:each="event : ${events}">
-	      <div class="thumbnail">
-	        <img th:src="'/' + ${event.eventImage}" th:alt="${event.eventName}"/>
-            <div class="caption">
-              <h3 th:text="${event.eventName}"></h3>
-              <p>A description</p>
-              <p><a th:href="'/beginPurchase?eventId=' + ${event.id}" class="btn btn-primary" role="button">Purchase</a> <a href="#" class="btn btn-default" role="button">More Info</a></p>
-            </div>
-          </div>
+
+    <form action="/completePurchase" method="post" th:object="${purchase}">
+    <input type="hidden" th:field="${purchase.eventId}"></input>
+    <h2>Awesome!  <span th:text="'You\'re about to go to ' + ${event.eventName}"></span></h2>
+    <div class="panel panel-default">
+      <div class="panel-body">
+      <div class="form-group">
+        <label for="inputEmail1">Email address</label>
+        <input type="email" class="form-control" id="inputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/>
+      </div>
+      <div class="form-group">
+        <label for="inputPassword1">Password</label>
+        <input type="password" class="form-control" id="inputPassword1" placeholder="Password"/>
+      </div>
+      <!-- Div to enter card information -->
+      <div class="panel-body">
+      <div class="form-group">
+        <!-- Select card on file -->
+        <div class="form-group">
+          <label for="cardOnFile">Select Method of Payment</label>
+          <select class="form-control" th:field="${purchase.cardId}">
+            <option value="1337">MasterCard ****-****-****-4226</option>
+            <option value="-1">Use a Different Card</option>
+          </select>
         </div>
+        <!-- Enter new card info -->
+      </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
       </div>
     </div>
+    </form>
     
 	<hr/><br/>
     <div class="container">

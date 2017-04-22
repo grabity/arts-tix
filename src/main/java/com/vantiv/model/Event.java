@@ -1,6 +1,7 @@
 package com.vantiv.model;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,6 +21,10 @@ public class Event {
 	private BigDecimal faceValue;
 	@ManyToOne
 	private Venue venue;
+	@Column
+	private String eventImage;
+	@Column
+	private Date eventDate;
 	
 	public Long getId() {
 		return id;
@@ -44,6 +49,18 @@ public class Event {
 	}
 	public void setVenue(Venue venue) {
 		this.venue = venue;
+	}
+	public String getEventImage() {
+		return eventImage;
+	}
+	public void setEventImage(String eventImage) {
+		this.eventImage = eventImage;
+	}
+	public Date getEventDate() {
+		return eventDate;
+	}
+	public void setEventDate(Date eventDate) {
+		this.eventDate = eventDate;
 	}
 	
 }
