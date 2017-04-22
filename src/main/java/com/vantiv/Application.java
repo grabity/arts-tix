@@ -60,14 +60,19 @@ public class Application extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		// @formatter:off
-		http.antMatcher("/**").authorizeRequests().antMatchers("/", "/login**", "/webjars/**", "/events**").permitAll().anyRequest()
+/*		http.antMatcher("/**").authorizeRequests().antMatchers("/", "/login**", "/webjars/**", "/events**", "/console**").permitAll().anyRequest()
 				.authenticated().and().exceptionHandling()
 				.authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/")).and().logout()
 				.logoutSuccessUrl("/").permitAll().and().csrf()
 				.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()).and()
-				.addFilterBefore(ssoFilter(), BasicAuthenticationFilter.class);
+				.addFilterBefore(ssoFilter(), BasicAuthenticationFilter.class); */
 		// @formatter:on
-	}
+		
+		// Rich is adding the following two lines to allow access to the h2 console
+        http.authorizeRequests().antMatchers("/").permitAll().and().authorizeRequests().antMatchers("/console/**").permitAll();
+        http.csrf().disable();
+        http.headers().frameOptions().disable();
+    }
 
 	@Configuration
 	@EnableResourceServer
