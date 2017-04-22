@@ -19,13 +19,13 @@ public class OrganizationsServiceImpl implements OrganizationsService {
 		List<Venue> organizations = new ArrayList<Venue> ();
 		Venue organization = new Venue();
 		organization.setId(new Long(555));
-		organization.setVenueName("First Organization");
+		organization.setVenueName("MamLuft");
 		organization.setLattitude(new BigDecimal("20.00"));
 		organizations.add(organization);
 
 		Venue organization2 = new Venue();
 		organization.setId(new Long(556));
-		organization2.setVenueName("Second Organization");
+		organization2.setVenueName("Nrityapana School of Performing Arts");
 		organization2.setLattitude(new BigDecimal("100.00"));
 		organizations.add(organization2);
 
