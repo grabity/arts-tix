@@ -17,7 +17,25 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 <body ng-app="app" ng-controller="home as home">
-	<script type="text/javascript" src="/webjars/angularjs/angular.min.js"></script>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '236098910200696',
+      xfbml      : true,
+      version    : 'v2.9'
+    });
+    FB.AppEvents.logPageView();
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+    <script type="text/javascript" src="/webjars/angularjs/angular.min.js"></script>
 	<script type="text/javascript">
 		angular
 				.module("app", [])
@@ -27,13 +45,8 @@
 						}).controller("home", function($http, $location) {
 					var self = this;
 					$http.get("/user").success(function(data) {
-						if (data.name) {
-							self.user = data.name;
-							self.authenticated = true;
-						} else {
-							self.user = "N/A";
-							self.authenticated = false;
-						}
+						self.user = data.userAuthentication.details.name;
+						self.authenticated = true;
 					}).error(function() {
 						self.user = "N/A";
 						self.authenticated = false;
@@ -61,13 +74,8 @@
           <a class="navbar-brand" href="#">Last Call</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right" ng-show="!home.authenticated">
-      		<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      		<li><a href="/login/github"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-    	  </ul>
           <ul class="nav navbar-nav navbar-right" ng-show="home.authenticated">
-      		<li><a href="/profile"><span ng-bind="home.user"></span></a></li>
-   			<li><button ng-click="home.logout()"  ng-show="home.authenticated" class="btn btn-link">Logout</button></li>
+      		<li><a href="/profile"><span class="glyphicon glyphicon-user" th:text="${userName}">Some User</span></a></li>
     	  </ul>
         </div><!--/.navbar-collapse -->
       </div>
