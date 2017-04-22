@@ -20,6 +20,12 @@ public class Venue {
 	@Column
 	private BigDecimal Longitude;
 
+	public Long getVenueId() {
+		return venueId;
+	}
+	public void setVenueId(Long VenueId) {
+		this.venueId = venueId;
+	}
 	public String getVenueName() {
 		return venueName;
 	}
