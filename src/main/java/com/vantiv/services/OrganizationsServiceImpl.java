@@ -18,26 +18,31 @@ public class OrganizationsServiceImpl implements OrganizationsService {
 	public List<Venue> findAll() {
 		List<Venue> organizations = new ArrayList<Venue> ();
 		Venue organization = new Venue();
+		organization.setVenueId(new Long(555));
 		organization.setVenueName("First Organization");
 		organization.setLattitude(new BigDecimal("20.00"));
 		organizations.add(organization);
 
 		Venue organization2 = new Venue();
+		organization.setVenueId(new Long(556));
 		organization2.setVenueName("Second Organization");
 		organization2.setLattitude(new BigDecimal("100.00"));
 		organizations.add(organization2);
 
 		Venue organization3 = new Venue();
+		organization.setVenueId(new Long(557));
 		organization3.setVenueName("Third Organization");
 		organization3.setLattitude(new BigDecimal("13.37"));
 		organizations.add(organization3);
 
 		Venue organization4 = new Venue();
+		organization.setVenueId(new Long(558));
 		organization4.setVenueName("Fourth Organization");
 		organization4.setLattitude(new BigDecimal("49.95"));
 		organizations.add(organization4);
 
 		Venue organization5 = new Venue();
+		organization.setVenueId(new Long(559));
 		organization5.setVenueName("Fifth Organization");
 		organization5.setLattitude(new BigDecimal("1000.00"));
 		organizations.add(organization5);
