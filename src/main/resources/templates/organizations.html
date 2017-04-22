@@ -46,20 +46,47 @@
 
 	<div class="container">
 	  <div class="row">
-	    <div class="col-sm-3 col-md-1">
+	    <div class="col-sm-6 col-md-5" th:each="organization : ${organizations}">
 	      <div class="thumbnail">
-	        <img src="../static/images/MamLuft.png" />
+<!-- 	        <img src="../static/MamLuft.png" />
+ -->	        <div class="caption">
+              <h3 th:text="${organization.venueName}"></h3>
+            </div>
           </div>
         </div>
       </div>
-	  <div class="row">
-	    <div class="col-sm-3 col-md-1">
+      </div>
+	  <!-- <div class="row">
+	    <div class="col-sm-6 col-md-5">
 	      <div class="thumbnail">
 	        <img src="../static/images/NrityapanaSchoolofPerformingArts.png" />
+	        <div class="caption">
+              <h3 th:text="${venue.venueName}"></h3>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+      <div class="row">
+	    <div class="col-sm-6 col-md-5">
+	      <div class="thumbnail">
+	        <img src="../static/images/NrityapanaSchoolofPerformingArts.png" />
+	        <div class="caption">
+              <h3 th:text="${venue.venueName}"></h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+	    <div class="col-sm-6 col-md-5">
+	      <div class="thumbnail">
+	        <img src="../static/images/NrityapanaSchoolofPerformingArts.png" />
+	        <div class="caption">
+              <h3 th:text="${venue.venueName}"></h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
     
 	<hr/><br/>
     <div class="container">

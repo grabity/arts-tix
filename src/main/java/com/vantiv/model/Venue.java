@@ -12,7 +12,7 @@ public class Venue {
 
 	@Id
 	@GeneratedValue
-	private Long venueId;
+	private Long id;
 	@Column
 	private String venueName;
 	@Column
@@ -20,6 +20,12 @@ public class Venue {
 	@Column
 	private BigDecimal Longitude;
 
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 	public String getVenueName() {
 		return venueName;
 	}
