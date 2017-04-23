@@ -19,7 +19,16 @@ public class Venue {
 	private BigDecimal lattitude;
 	@Column
 	private BigDecimal Longitude;
+	@Column
+	private String venueImage;
+	
 
+	public String getVenueImage() {
+		return venueImage;
+	}
+	public void setVenueImage(String venueImage) {
+		this.venueImage = venueImage;
+	}
 	public Long getId() {
 		return id;
 	}
