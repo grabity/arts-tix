@@ -9,8 +9,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import org.springframework.util.StringUtils;
+
 @Entity
-public class Event {
+public class Event implements Comparable {
 
 	@Id
 	@GeneratedValue
@@ -25,6 +27,10 @@ public class Event {
 	private String eventImage;
 	@Column
 	private Date eventDate;
+	@Column
+	private String description;
+	@Column
+	private int ticketsRemaining;
 	
 	public Long getId() {
 		return id;
@@ -62,5 +68,33 @@ public class Event {
 	public void setEventDate(Date eventDate) {
 		this.eventDate = eventDate;
 	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
 	
+	public int getTicketsRemaining() {
+		return ticketsRemaining;
+	}
+	public void setTicketsRemaining(int ticketsRemaining) {
+		this.ticketsRemaining = ticketsRemaining;
+	}
+	public String getShortDescription() {
+		String output = "";
+		if (!StringUtils.isEmpty(this.description)) {
+			int characters = Math.min(100, this.description.length());
+			output = this.description.substring(0,characters);
+			if (description.length() > 100) {
+				output += "...";
+			}
+		}
+		return output;
+	}
+	@Override
+	public int compareTo(Object arg0) {
+		Event compTo = (Event) arg0;
+		return this.getEventDate().compareTo(compTo.getEventDate());
+	}
 }

@@ -7,6 +7,7 @@ public class Purchase {
 	private Long eventId;
 	private Long userId;
 	private Long cardId;
+	private int numberOfTickets;
 	private BigDecimal price;
 	public Long getEventId() {
 		return eventId;
@@ -31,6 +32,12 @@ public class Purchase {
 	}
 	public void setPrice(BigDecimal price) {
 		this.price = price;
+	}
+	public int getNumberOfTickets() {
+		return numberOfTickets;
+	}
+	public void setNumberOfTickets(int numberOfTickets) {
+		this.numberOfTickets = numberOfTickets;
 	}
 	
 }

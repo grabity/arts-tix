@@ -15,15 +15,6 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script th:inline="javascript">
-    /*<![CDATA[*/
-      var pricePerTicket = [[${event.faceValue}]];
-      function updateTotalPrice() {
-    	var totalPrice = "$" + ( $('#numberOfTickets').val() * pricePerTicket);
-    	$('#totalPrice').text(totalPrice);
-      }
-    /*]]>*/
-    </script>
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -48,33 +39,7 @@
 	<br/><br/><br/><br/><br/><br/>
 
 
-    <form action="/completePurchase" method="post" th:object="${purchase}">
-    <input type="hidden" th:field="${purchase.eventId}"></input>
-    <h2>Awesome!  <span th:text="'You\'re about to go to ' + ${event.eventName}"></span></h2>
-    <div class="panel panel-default">
-      <div class="panel-body">
-      <div class="form-group">
-        <label for="numberOfTickets"><span th:text="'How many tickets would you like? (Up to ' + ${event.ticketsRemaining} +')'"></span></label>
-        <input type="number" class="form-control" th:field="${purchase.numberOfTickets}" placeholder="2" min="1" th:max="${event.ticketsRemaining}" step="1" onchange="updateTotalPrice()"/>
-      </div>
-      <!-- Div to enter card information -->
-      <div class="panel-body">
-      <div class="form-group">
-        <!-- Select card on file -->
-        <div class="form-group">
-          <label for="cardOnFile">Select Method of Payment</label>
-          <select class="form-control" th:field="${purchase.cardId}">
-            <option value="1337">MasterCard ****-****-****-4226</option>
-            <option value="-1">Use a Different Card</option>
-          </select>
-        </div>
-        <!-- Enter new card info -->
-      </div>
-      </div>
-      <button type="submit" class="btn btn-primary">Submit</button> <span id="totalPrice">$0.00</span>
-      </div>
-    </div>
-    </form>
+    <h2>Your profile has been updated</h2>
     
 	<hr/><br/>
     <div class="container">
