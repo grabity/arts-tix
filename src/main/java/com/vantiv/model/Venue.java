@@ -21,8 +21,16 @@ public class Venue {
 	private BigDecimal Longitude;
 	@Column
 	private String venueImage;
+	@Column
+	private String venueURL;
 	
 
+	public String getVenueURL() {
+		return venueURL;
+	}
+	public void setVenueURL(String venueURL) {
+		this.venueURL = venueURL;
+	}
 	public String getVenueImage() {
 		return venueImage;
 	}

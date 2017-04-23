@@ -47,11 +47,14 @@
 	<div class="container">
 	  <div class="row">
 	    <div class="col-sm-6 col-md-4" th:each="organization : ${organizations}" >
-	      <div class="thumbnail">
-	        <img th:src="'/' + ${organization.venueImage}" height="250"/>
+	      <div class="rounded">
+	      <a th:href="${organization.VenueURL}">
+	        <img th:src="'/' + ${organization.venueImage}" th:alt="${organization.venueName}" align="middle" />
+	       </a>
 	       <div class="caption">
               <h3 th:text="${organization.venueName}"></h3>
            </div>
+           <div class="clearfix visible-xs-block"></div>
 	       </div>
         </div>
       </div>
